@@ -114,3 +114,16 @@ DROP COLUMN id;
 -- Drop second_table from your database.
 DROP TABLE second_table;
 
+-----   25% CHECKPOINT  -----
+
+-- Next, drop first_table from the database.
+DROP TABLE first_table;
+
+
+-- All the tables are gone now, too. View all the databases using the command to list them.
+-- \l
+
+-- Rename first_database to mario_database
+ALTER DATABASE first_database RENAME TO mario_database;
+
+-- 
