@@ -1,0 +1,66 @@
+:root{
+    --background-color-primary: #141a35;
+    --background-color-secondary: #76777c;
+    --font-color-main: #f8f7ff;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+#main{
+
+    background-color: var(--background-color-primary);
+    color: var(--font-color-main);
+    border: red solid 1px;
+
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-secondary);
+    text-align: center;
+    min-height: 50px;
+    width: 100%;
+    border: red solid 1px;
+}
+
+#img-div{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-content: center;
+}
+
+
+#image{
+ 
+    max-width: 100%;
+    height: auto;
+    border: red solid 1px;
+    margin: 0  auto;
+    padding-top: 3.5% ;
+
+}
+
+#img-caption{
+    text-align: center;
+}
+
+#tribute-info{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    border: white solid 1px;
+    padding-top: 2.5%;
+}
