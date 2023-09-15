@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox | Documentation </title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header id="main-header">
+        <h1>Documentation | Basic Concepts</h1>
+    </header>
+   
+    <main id="main-doc">
+
+        <nav id="navbar">
+            <header id="nav-header">
+                CSS Flexbox
+            </header>
+            <hr>
+            <ul id="nav-list">
+                <li  class="nav-list-li"><a href="#Basic_concepts_of_flexbox" class="nav-link">Basic concepts of flexbox</a></li><hr>
+                <li class="nav-list-li"><a href="#The_two_axes_of_flexbox" class="nav-link">The two axes of flexbox</a></li><hr>
+                <li class="nav-list-li"><a href="#Start_and_end_lines" class="nav-link">Start and end lines</a></li><hr>
+                <li class="nav-list-li"><a href="#The_flex_container" class="nav-link">The flex container</a></li><hr>
+                <li class="nav-list-li"><a href="#Multi-line_flex_containers_with_flex-wrap" class="nav-link">Multi-line flex containers with flex-wrap</a></li><hr>
+                <li class="nav-list-li"><a href="#The_flex-flow_shorthand" class="nav-link">The flex-flow shorthand</a></li><hr>
+                <li class="nav-list-li"><a href="#Properties_applied_to_flex_items" class="nav-link">Properties applied to flex items</a></li><hr>
+                <li class="nav-list-li"><a href="#Alignment,_justification_and_distribution_of_free_space_between_items" class="nav-link">Alignment, justification and distribution of free space between items</a></li><hr>
+                
+            </ul>
+        </nav>
+        <div class="container">
+        <section id="Basic_concepts_of_flexbox" class="main-section">
+            <header ><h2>Basic concepts of flexbox </h2></header>
+            <p>The flexible box layout module, usually referred to as flexbox, was designed as a one-dimensional layout model, and as a method that could offer space distribution between items in an interface and powerful alignment capabilities. This article gives an outline of the main features of flexbox, which we will be exploring in more detail in the rest of these guides.</p>
+            <p>When we describe flexbox as being one dimensional we are describing the fact that flexbox deals with layout in one dimension at a time — either as a row or as a column. This can be contrasted with the two-dimensional model of CSS Grid Layout, which controls columns and rows together.</p>
+        </section>
+        <section id="The_two_axes_of_flexbox" class="main-section">
+            <header><h2>The two axes of flexbox</h2></header>
+            <p>When working with flexbox you need to think in terms of two axes — the main axis and the cross axis. The main axis is defined by the flex-direction property, and the cross axis runs perpendicular to it. Everything we do with flexbox refers back to these axes, so it is worth understanding how they work from the outset.</p>
+            <ul class="main-list">
+                <li> 
+                    <h3>Main axis </h3>
+                    <p>The main axis is defined by flex-direction, which has four possible values:</p>
+                    <ul class="inner-list">
+                        <li class="code-reference"><code>row</code></li>
+                        <li class="code-reference"><code>row-reverse</code></li>
+                        <li class="code-reference"><code>column</code></li>
+                        <li class="code-reference"><code>column-reverse</code></li>
+                    </ul>
+                </li>
+                <p>Should you choose row or row-reverse, your main axis will run along the row in the inline direction.</p>
+                <p>Choose column or column-reverse and your main axis will run from the top of the page to the bottom — in the block direction.</p>
+
+                <li>
+                    <h3>Cross axis</h3> 
+                    <p>The cross axis runs perpendicular to the main axis, therefore if your flex-direction (main axis) is set to row or row-reverse the cross axis runs down the columns.</p>
+                    <p>If your main axis is column or column-reverse then the cross axis runs along the rows.</p>
+                </li>
+
+            </ul>
+        </section>
+        <section id="Start_and_end_lines" class="main-section">
+            <header><h2>Start and end lines</h2></header>
+            <p>Another vital area of understanding is how flexbox makes no assumption about the writing mode of the document. In the past, CSS was heavily weighted towards horizontal and left-to-right writing modes. Modern layout methods encompass the range of writing modes and so we no longer assume that a line of text will start at the top left of a document and run towards the right-hand side, with new lines appearing one under the other.</p>
+            <p>If the flex-direction is row and I am working in English, then the start edge of the main axis will be on the left, the end edge on the right.</p>
+            <p>If I were to work in Arabic, then the start edge of my main axis would be on the right and the end edge on the left.</p>
+            <p>In both cases the start edge of the cross axis is at the top of the flex container and the end edge at the bottom, as both languages have a horizontal writing mode.</p>
+        </section>
+        <section id="The_flex_container" class="main-section">
+            <header><h2>The flex container</h2></header>
+            <p>An area of a document laid out using flexbox is called a flex container. To create a flex container, we set the value of the area's container's display property to flex or inline-flex. As soon as we do this the direct children of that container become flex items. As with all properties in CSS, some initial values are defined, so when creating a flex container all of the contained flex items will behave in the following way.</p>
+            <ul class="inner-list">
+                <li>Items display in a row (the flex-direction property's default is row).</li>
+                <li>The items start from the start edge of the main axis.</li>
+                <li>The items do not stretch on the main dimension, but can shrink.</li>
+                <li>The items will stretch to fill the size of the cross axis.</li>
+                <li>The flex-basis property is set to auto.</li>
+                <li>The flex-wrap property is set to nowrap.</li>
+            </ul>
+            <p>The result of this is that your items will all line up in a row, using the size of the content as their size in the main axis. If there are more items than can fit in the container, they will not wrap but will instead overflow. If some items are taller than others, all items will stretch along the cross axis to fill its full size.</p>
+        </section>
+        <section id="Multi-line_flex_containers_with_flex-wrap" class="main-section">
+            <header><h2>Multi-line flex containers with flex-wrap</h2></header>
+            <p>While flexbox is a one dimensional model, it is possible to cause our flex items to wrap onto multiple lines. In doing so, you should consider each line as a new flex container. Any space distribution will happen across that line, without reference to the lines on either side.</p>
+            <p>To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, should your items be too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width, the total width of the items being too wide for the flex container. As flex-wrap is set to wrap, the items wrap. Set it to nowrap, which is also the initial value, and they will instead shrink to fit the container because they are using initial flexbox values that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.</p>
+        </section>
+        <section id="The_flex-flow_shorthand" class="main-section">
+            <header><h2>The flex-flow shorthand</h2></header>
+            <p>You can combine the two properties flex-direction and flex-wrap into the flex-flow shorthand. The first value specified is flex-direction and the second value is flex-wrap.</p>
+        </section>
+        <section id="Properties_applied_to_flex_items" class="main-section">
+            <header><h2>Properties applied to flex items</h2></header>
+            <p>In the live example below try changing the first value to one of the allowable values for flex-direction - row, row-reverse, column or column-reverse, and also change the second to wrap and nowrap.</p>
+            <ul class="inner-list">
+                <li>
+                    <h3><code>flex-grow</code></h3>
+                    <p>ith the flex-grow property set to a positive integer, flex items can grow along the main axis from their flex-basis. This will cause the item to stretch and take up any available space on that axis, or a proportion of the available space if other items are allowed to grow too.</p>
+                    <p>If we gave all of our items in the example above a flex-grow value of 1 then the available space in the flex container would be equally shared between our items and they would stretch to fill the container on the main axis.</p>
+                    <p>The flex-grow property can be used to distribute space in proportion. If we give our first item a flex-grow value of 2, and the other items a value of 1 each, 2 parts of the available space will be given to the first item (100px out of 200px in the case of the example above), 1 part each the other two (50px each out of the 200px total).</p>
+                </li>
+                <li>
+                    <h3><code>flex-shrink</code></h3>
+                    <p>Where the flex-grow property deals with adding space in the main axis, the flex-shrink property controls how it is taken away. If we do not have enough space in the container to lay out our items, and flex-shrink is set to a positive integer, then the item can become smaller than the flex-basis. As with flex-grow, different values can be assigned in order to cause one item to shrink faster than others — an item with a higher value set for flex-shrink will shrink faster than its siblings that have lower values.</p>
+                </li>
+                <li>
+                    <h3><code>flex-basis</code></h3> 
+                    <p>The flex-basis is what defines the size of that item in terms of the space it leaves as available space. The initial value of this property is auto — in this case the browser looks to see if the items have a size. In the example above, all of the items have a width of 100 pixels and so this is used as the flex-basis.</p>
+                </li>
+            </ul>
+        </section>
+        <section id="Alignment,_justification_and_distribution_of_free_space_between_items" class="main-section">
+            <header><h2>Alignment, justification and distribution of free space between items</h2></header>
+            <p>A key feature of flexbox is the ability to align and justify items on the main- and cross-axes, and to distribute space between flex items. Note that these properties are to be set on the flex container, not on the items themselves.</p>
+            <ul class="outer-list">
+                <li> 
+                    <h3><code>align-items</code></h3>
+                    <p>The align-items property will align the items on the cross axis.</p>
+                    <p>The initial value for this property is stretch and this is why flex items stretch to the height of the flex container by default. This might be dictated by the height of the tallest item in the container, or by a size set on the flex container itself.</p>
+                    <p>You could instead set align-items to flex-start in order to make the items line up at the start of the flex container, flex-end to align them to the end, or center to align them in the center. Try this in the live example — I have given the flex container a height in order that you can see how the items can be moved around inside the container. See what happens if you set the value of align-items to:</p>
+                    <ul class="inner-list">
+                        <li>stretch</li>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                        <li>center</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><code>justify-content</code></h3>
+                    <p>The justify-content property is used to align the items on the main axis, the direction in which flex-direction has set the flow. The initial value is flex-start which will line the items up at the start edge of the container, but you could also set the value to flex-end to line them up at the end, or center to line them up in the center.</p>
+                    <p>You can also use the value space-between to take all the spare space after the items have been laid out, and share it out evenly between the items so there will be an equal amount of space between each item. To cause an equal amount of space on the right and left of each item use the value space-around. With space-around, items have a half-size space on either end. Or, to cause items to have equal space around them use the value space-evenly. With space-evenly, items have a full-size space on either end.</p>
+                    <p>Try the following values of justify-content in the live example:</p>
+                    <ul class="inner-list">
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                        <li>center</li>
+                        <li>space-around</li>
+                        <li>space-between</li>
+                        <li>space-evenly</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><code>justify-items</code></h3>
+                    <p>The justify-items property is ignored in flexbox layouts.</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+    </main>
+
+    
+</body>
+</html>
