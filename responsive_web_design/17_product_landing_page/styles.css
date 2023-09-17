@@ -1,0 +1,123 @@
+:root{
+    --primary-color-navbar-background: #233d4d;
+    --font-color-navbar: #bcb8b1;
+    --font-color-header: #00b4d8;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container{
+    max-width: 100%;
+    margin: auto;
+    margin-top: 0px;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+#header-img{
+    width: 100px;
+}
+
+#header{
+    background: var(--primary-color-navbar-background);
+    position: sticky;
+    top: 0;
+}
+
+
+#nav-bar .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+#nav-bar .container ul{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+#nav-bar .container ul li{
+    list-style: none;
+}
+
+#nav-bar .container ul li a{
+    text-decoration: none;
+    color: var(--font-color-navbar);
+    padding: 15px 20px;
+    margin: 0px 5px;
+    
+}
+
+#nav-bar .container ul li a:hover{
+    color: black;
+    background-color: azure;
+    border-radius: 15%;
+}
+
+@media (max-width: 650px) {
+    #nav-bar {
+      height: 150px;
+    }
+    #nav-bar .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #nav-bar ul li a {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    #nav-bar {
+      height: 270px;
+    }
+    #nav-bar ul {
+      display: flex;
+      flex-direction: column;
+    }
+    #nav-bar ul li {
+      margin-bottom: 20px !important;
+      align-self: center;
+    }
+    #nav-bar ul li a {
+      padding: 10px 15px !important;
+    }
+  }
+
+
+  #headline {
+  
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+
+  }
+
+  #headline .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    color: var( --font-color-header);
+    margin: 25px;
+}
+
+
+
+.main-container{
+  text-align: center;
+}
