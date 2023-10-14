@@ -12,7 +12,7 @@ class Category:
     def check_funds(self, amount):
         total_amount = 0
         for ledger_item in self.ledger:
-            print(ledger_item)
+            #print(ledger_item)
             total_amount += ledger_item['amount']
         sufficient_funds = False if amount > total_amount else True
         return sufficient_funds 
@@ -42,14 +42,16 @@ class Category:
         body = ""
         total = "Total: " + str(round(self.get_balance(), 2))
         for item in self.ledger:
-            current_amount = str(round(item["amount"], 2))
+            current_amount = float(round(item["amount"], 2)  )
+            current_amount = "{:.2f}".format(current_amount)
             current_description = item["description"]
             if len(current_amount) > 7:
                 current_amount = current_amount[0:7]
             if len(current_description) > 23:
                 current_description = current_description[0:23] 
+            # get decimal places, don't show decimal places if they are .00
             body += "{description_item:<23}".format(description_item=current_description)
-            body += "{amount_item:>30}\n".format(amount_item=current_amount)
+            body += "{amount_item:>7}\n".format(amount_item=current_amount)
         return f"{top}\n{body}{total}"
 
 
@@ -70,20 +72,60 @@ def create_spend_chart(categories):
         spending_by_category.update({f"{category.name}": category_spent})
     for key, value in spending_by_category.items():
         spending_by_category[key] = round((value * 100) / total_spent, 2)
+    # print("Spending by category: ", spending_by_category)
     # Data presentation layer - Preparing the bar char output:
     bar_chart_title = "Percentage spent by category\n"
+
     percentage_list = list(range(100, -1, -10))
     bar_chart_rows = ""
+    circle = "o"
+
     for i in  percentage_list:
+        circles_in_row = ""
         for value in list(spending_by_category.values()):
-            if round(value, -1) == i :
-                 bar_chart_rows += f"{i}| o        \n"
+            eval = round(value, 0) % 10
+            eval = value - eval
+            if eval >= i :
+                 circles_in_row += circle + "  " 
+                #  print(round(value, -1))
             else:
-                bar_chart_rows += f"{i}|          \n"
+                circles_in_row += "   " 
+        bar_chart_rows += f"{i:>3}| {circles_in_row}\n"
     bar_chart_rows += "    ----------\n"
 
-    bar_chart = f"{bar_chart_title}{bar_chart_rows}"
+    #Bar chart categories names
+    
+    category_name_rows = ""
+    len_categories = []
+    names_categories = []
 
-    #return total_spent, spending_by_category.values()
+    #get the length of the name each category
+    for name in list(spending_by_category.keys()):
+        len_categories.append(len(name))
+        names_categories.append(name)
+    max_len_name = max(len_categories)
+
+    # iterate n times where n is equal to max_len_name
+    #to create rows
+    for row in range(max_len_name):
+        letters_in_row = ""
+        for name in names_categories:
+            try:
+                letters_in_row += name[row] + "  "
+            except:
+                letters_in_row += "   "
+                continue
+        category_name_rows += "     "+ letters_in_row
+            
+            # letters_in_row += "  "
+            # continue
+        category_name_rows += "" if row == max_len_name - 1 else "\n"
+    
+    
+
+
+    bar_chart = f"{bar_chart_title}{bar_chart_rows}{category_name_rows}"
+
+    # #return total_spent, spending_by_category.values()
     return bar_chart
 
